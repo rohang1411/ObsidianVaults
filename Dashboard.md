@@ -1,322 +1,160 @@
 ---
-cssclasses:
-  - premium-dashboard
+cssclass: dashboard
 ---
 
 <style>
-/* === PREMIUM OBSIDIAN DASHBOARD CSS === */
+/* Dashboard++ Core Styling Clone (TfTHacker / Nicole van der Hoeven) */
+/* Natively integrated so you don't need snippets! */
 
-/* Base Container Styling */
-.premium-dashboard-wrapper {
-    max-width: 1200px;
-    margin: 0 auto;
-    padding: 2rem;
-    font-family: var(--font-text);
-    color: var(--text-normal);
+.dashboard {
+    --db-column-count: 3;
+    --db-card-bg: var(--background-secondary);
+    --db-card-radius: 12px;
+    --db-header-height: auto;
 }
 
-/* Hide the default Obsidian H1 page title for a cleaner look */
-.markdown-preview-view h1.page-title {
-    display: none !important;
+/* Adjust column count on smaller screens */
+@media screen and (max-width: 1000px) {
+    .dashboard { --db-column-count: 2; }
+}
+@media screen and (max-width: 600px) {
+    .dashboard { --db-column-count: 1; }
 }
 
-/* --- HERO BANNER --- */
-.hero-banner {
-    width: 100%;
-    height: 300px;
-    border-radius: 24px;
-    overflow: hidden;
-    position: relative;
-    margin-bottom: 3rem;
-    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.2);
-    display: flex;
-    align-items: flex-end;
-    background-image: url('https://images.unsplash.com/photo-1550684848-fac1c5b4e853?q=80&w=2070&auto=format&fit=crop');
-    background-size: cover;
-    background-position: center;
-}
-
-.hero-overlay {
-    position: absolute;
-    inset: 0;
-    background: linear-gradient(to top, rgba(0,0,0,0.8) 0%, rgba(0,0,0,0.2) 50%, rgba(0,0,0,0) 100%);
-    z-index: 1;
-}
-
-.hero-content {
-    position: relative;
-    z-index: 2;
-    padding: 3rem;
-    width: 100%;
-}
-
-.hero-content h1 {
-    font-size: 3.5rem;
-    font-weight: 800;
-    color: #ffffff !important;
-    margin: 0 0 10px 0;
-    letter-spacing: -1px;
-    text-shadow: 0 2px 10px rgba(0,0,0,0.5);
-    border: none;
-}
-
-.hero-content p {
-    font-size: 1.2rem;
-    color: rgba(255, 255, 255, 0.9) !important;
+/* Base Dashboard Grid Layout */
+.dashboard .markdown-preview-view > div > div > ul {
+    display: grid !important;
+    grid-template-columns: repeat(var(--db-column-count), 1fr);
+    grid-gap: 20px;
+    padding: 0;
     margin: 0;
-    max-width: 600px;
-    text-shadow: 0 1px 5px rgba(0,0,0,0.5);
+    list-style: none !important;
 }
 
-/* --- SECTION TITLES --- */
-.section-title {
-    font-size: 2rem;
-    font-weight: 700;
-    margin: 3rem 0 1.5rem 0;
-    color: var(--text-normal);
-    display: flex;
-    align-items: center;
-    gap: 12px;
-    border-bottom: 2px solid var(--background-modifier-border);
-    padding-bottom: 10px;
-}
-
-.section-title span.icon {
-    font-size: 1.2em;
-}
-
-
-/* --- PROJECT GRID --- */
-.project-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
-    gap: 2rem;
-    margin-bottom: 4rem;
-}
-
-/* --- CARD DESIGN --- */
-.project-card {
-    background: var(--background-primary);
-    border-radius: 20px;
-    overflow: hidden;
+/* The actual "Cards" (Top-level List Items) */
+.dashboard .markdown-preview-view > div > div > ul > li {
+    background-color: var(--db-card-bg);
+    border-radius: var(--db-card-radius);
+    padding: 24px;
     border: 1px solid var(--background-modifier-border);
-    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
-    transition: all 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
     display: flex;
     flex-direction: column;
-    height: 100%;
-    position: relative;
+    margin: 0;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
 }
 
-.project-card:hover {
-    transform: translateY(-8px);
-    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
+.dashboard .markdown-preview-view > div > div > ul > li:hover {
+    box-shadow: 0 8px 15px rgba(0, 0, 0, 0.1);
     border-color: var(--interactive-accent);
 }
 
-/* Card Cover Image */
-.card-cover {
-    height: 180px;
-    width: 100%;
-    overflow: hidden;
-    position: relative;
+/* Removing the bullet point from the top-level cards */
+.dashboard .markdown-preview-view > div > div > ul > li::before {
+    display: none !important;
 }
 
-.card-cover img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    transition: transform 0.6s ease;
-}
-
-.project-card:hover .card-cover img {
-    transform: scale(1.05);
-}
-
-/* Card Badge */
-.card-badge {
-    position: absolute;
-    top: 15px;
-    right: 15px;
-    background: rgba(0,0,0,0.6);
-    backdrop-filter: blur(10px);
-    color: white;
-    padding: 6px 12px;
-    border-radius: 20px;
-    font-size: 0.8rem;
-    font-weight: 600;
-    letter-spacing: 0.5px;
-    z-index: 2;
-}
-
-/* Card Body */
-.card-body {
-    padding: 2rem;
-    flex-grow: 1;
-    display: flex;
-    flex-direction: column;
-}
-
-.card-title {
-    font-size: 1.6rem;
-    font-weight: 800;
-    margin: 0 0 10px 0;
+/* Card Titles (The first line of the top level list item) */
+/* We target the direct text node/strong tag inside the li */
+.dashboard .markdown-preview-view > div > div > ul > li > strong,
+.dashboard .markdown-preview-view > div > div > ul > li > a.internal-link,
+.dashboard .markdown-preview-view > div > div > ul > li > p {
+    font-size: 1.4em !important;
+    font-weight: 700 !important;
+    margin-bottom: 12px !important;
     color: var(--text-normal);
-    border: none;
+    display: block;
+    border-bottom: 2px solid var(--background-modifier-border);
+    padding-bottom: 8px;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
 }
 
-.card-desc {
-    color: var(--text-muted);
-    font-size: 1rem;
-    line-height: 1.6;
-    margin-bottom: 2rem;
+.dashboard .markdown-preview-view > div > div > ul > li > strong {
+    color: var(--interactive-accent);
 }
 
-/* Internal Links inside Card */
-.card-links {
-    margin-top: auto;
+/* The inner lists inside the cards (The actual links) */
+.dashboard .markdown-preview-view > div > div > ul > li > ul {
+    padding-left: 0;
+    margin-top: 10px;
+    list-style: none !important;
     display: flex;
     flex-direction: column;
     gap: 8px;
 }
 
-.card-links a.internal-link {
+/* Inner list items */
+.dashboard .markdown-preview-view > div > div > ul > li > ul > li {
+    margin: 0;
+    padding: 0;
+}
+
+/* Hide bullet points on inner links */
+.dashboard .markdown-preview-view > div > div > ul > li > ul > li::before {
+    content: '' !important;
+    display: none !important;
+}
+
+/* Styling the Internal Links directly */
+.dashboard .markdown-preview-view > div > div > ul > li > ul > li a {
     display: flex;
     align-items: center;
-    padding: 10px 16px;
-    background: var(--background-secondary);
-    border-radius: 12px;
+    padding: 8px 12px;
+    background-color: var(--background-primary);
+    border-radius: 8px;
+    text-decoration: none !important;
     color: var(--text-normal);
-    text-decoration: none;
     font-weight: 500;
     transition: all 0.2s ease;
-    border: 1px solid transparent;
-}
-
-.card-links a.internal-link:hover {
-    background: var(--interactive-accent);
-    color: var(--text-on-accent, white) !important;
-    transform: translateX(5px);
-    box-shadow: 0 4px 12px rgba(0,0,0,0.1);
-}
-
-.card-links a.internal-link::before {
-    content: '→';
-    margin-right: 12px;
-    opacity: 0.5;
-    transition: all 0.2s ease;
-}
-
-.card-links a.internal-link:hover::before {
-    opacity: 1;
-    transform: translateX(3px);
-    color: var(--text-on-accent, white);
-}
-
-/* --- QUICK ACTIONS BAR --- */
-.quick-actions-bar {
-    display: flex;
-    gap: 1.5rem;
-    flex-wrap: wrap;
-    background: var(--background-secondary);
-    padding: 2rem;
-    border-radius: 20px;
     border: 1px solid var(--background-modifier-border);
 }
 
-.action-btn {
-    display: inline-flex;
-    align-items: center;
-    gap: 10px;
-    padding: 12px 24px;
-    background: var(--background-primary);
-    border: 1px solid var(--background-modifier-border);
-    border-radius: 14px;
-    color: var(--text-normal);
-    font-weight: 600;
-    text-decoration: none;
-    transition: all 0.2s ease;
-}
-
-.action-btn:hover {
-    background: var(--interactive-accent);
+.dashboard .markdown-preview-view > div > div > ul > li > ul > li a:hover {
+    background-color: var(--interactive-accent);
     color: var(--text-on-accent, white) !important;
+    transform: translateX(4px);
     border-color: var(--interactive-accent);
-    transform: translateY(-3px);
-    box-shadow: 0 8px 20px rgba(0,0,0,0.15);
 }
 
-/* Reset Obsidian link styling inside cards so they don't look weird */
-.premium-dashboard-wrapper a {
-    text-decoration: none !important;
+/* Add small bullet icon inside the link button */
+.dashboard .markdown-preview-view > div > div > ul > li > ul > li a::before {
+    content: "•";
+    margin-right: 8px;
+    font-size: 1.2em;
+    color: var(--text-muted);
+    transition: color 0.2s;
 }
 
+.dashboard .markdown-preview-view > div > div > ul > li > ul > li a:hover::before {
+    color: rgba(255,255,255,0.7);
+}
+
+/* Hide the main H1 page title for a cleaner dashboard look */
+.dashboard .markdown-preview-view h1.page-title {
+    display: none !important;
+}
 </style>
 
-<div class="premium-dashboard-wrapper">
+# Obsidian Dashboard++
 
-    <!-- HERO BANNER -->
-    <div class="hero-banner">
-        <div class="hero-overlay"></div>
-        <div class="hero-content">
-            <h1>Command Center</h1>
-            <p>Welcome to your personal knowledge base. Select a workspace below to begin learning.</p>
-        </div>
-    </div>
+- **🧠 Deep Learning**
+    - [[Deep Learning/Transformers|Transformers]]
+    - [[Deep Learning/Convolutional Neural Network (CNN)|Convolutional Neural Networks]]
+    - [[Deep Learning/Long Short Term Memory Networks (LSTM)|LSTMs]]
+    - [[Deep Learning/GAN|Generative Adversarial Nets]]
+    - [[Deep Learning/Variational Auto Encoders|Variational Auto Encoders]]
+    - [[Deep Learning/CheatSheet|Theory CheatSheet]]
 
-    <!-- MAIN PROJECTS SECTION -->
-    <h2 class="section-title"><span class="icon">✨</span> Active Workspaces</h2>
+- **🎵 Infinitune**
+    - [[Infinitune/1. Project Overview/1. Project Overview|1. Project Overview]]
+    - [[Infinitune/3. Core Concepts & Technologies/3. Core Concepts & Technologies|3. Core Concepts]]
+    - [[Infinitune/4. Architecture & Code Deep-Dive/4. Architecture & Code Deep-Dive|4. Architecture Dive]]
+    - [[Infinitune/5. Interview Preparation Guide/5. Interview Preparation Guide|5. Interview Prep]]
+    - [[Infinitune/Flowchart.canvas|Architecture Flowchart]]
 
-    <div class="project-grid">
-
-        <!-- CARD 1: DEEP LEARNING -->
-        <div class="project-card">
-            <div class="card-badge">ACTIVE</div>
-            <div class="card-cover">
-                <img src="https://images.unsplash.com/photo-1620712943543-bcc4688e7485?q=80&w=1965&auto=format&fit=crop" alt="AI Brain Concept">
-            </div>
-            <div class="card-body">
-                <h3 class="card-title">Deep Learning</h3>
-                <p class="card-desc">Core concepts, neural network architectures, and intensive deep learning study materials.</p>
-                
-                <div class="card-links">
-                    <a href="deep-learning/transformers" class="internal-link">Transformers Architecture</a>
-                    <a href="deep-learning/convolutional-neural-network-(cnn)" class="internal-link">Convolutional Networks</a>
-                    <a href="deep-learning/variational-auto-encoders" class="internal-link">Variational Auto Encoders</a>
-                    <a href="deep-learning/gan" class="internal-link">Generative Adversarial Nets</a>
-                    <a href="deep-learning/cheatsheet" class="internal-link">Quick CheatSheet</a>
-                </div>
-            </div>
-        </div>
-
-        <!-- CARD 2: INFINITUNE -->
-        <div class="project-card">
-            <div class="card-badge">DEVELOPMENT</div>
-            <div class="card-cover">
-                <img src="https://images.unsplash.com/photo-1614149162883-504ce4d13909?q=80&w=1974&auto=format&fit=crop" alt="Music Audio Concept">
-            </div>
-            <div class="card-body">
-                <h3 class="card-title">Infinitune</h3>
-                <p class="card-desc">Project documentation, system architecture deep-dives, and interview preparation guides.</p>
-                
-                <div class="card-links">
-                    <a href="infinitune/1.-project-overview/1.-project-overview" class="internal-link">Project Overview</a>
-                    <a href="infinitune/4.-architecture-&-code-deep-dive/4.-architecture-&-code-deep-dive" class="internal-link">Architecture Deep-Dive</a>
-                    <a href="infinitune/5.-interview-preparation-guide/5.-interview-preparation-guide" class="internal-link">Interview Prep Guide</a>
-                    <a href="infinitune/flowchart" class="internal-link">System Flowchart</a>
-                </div>
-            </div>
-        </div>
-
-    </div>
-
-    <!-- QUICK ACTIONS SECTION -->
-    <h2 class="section-title"><span class="icon">⚡</span> Quick Actions</h2>
-    
-    <div class="quick-actions-bar">
-        <a href="obsidian://new" class="action-btn">➕ Create New Note</a>
-        <a href="obsidian://search" class="action-btn">🔍 Search Vault</a>
-        <a href="obsidian://show-graph" class="action-btn">🕸️ Open Graph View</a>
-    </div>
-
-</div>
+- **⚡ Quick Links**
+    - [➕ Create New Note](obsidian://new)
+    - [🔍 Search Workspace](obsidian://search)
+    - [🕸️ View Graph](obsidian://show-graph)
+    - [[README|Vault Readme]]
