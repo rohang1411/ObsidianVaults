@@ -1,0 +1,272 @@
+/* =========================================
+   Notion-Style Aesthetic Dashboard CSS
+   For Native Obsidian Markdown
+   ========================================= */
+
+body {
+    --notion-bg: var(--background-primary);
+    --notion-card: var(--background-secondary);
+    --notion-accent: var(--interactive-accent);
+    --notion-text: var(--text-normal);
+    --notion-muted: var(--text-muted);
+}
+
+/* Base Dashboard Tuning */
+.notion-dashboard {
+    max-width: 900px !important;
+    margin: 0 auto;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif;
+}
+
+/* Hide Default Page Title when using Banners */
+.notion-dashboard .markdown-preview-view h1.page-title,
+.notion-dashboard .cm-heading.cm-heading-1 {
+    display: none !important;
+}
+
+/* --- THE WELCOME HEADER (H1) --- */
+.notion-dashboard h1 {
+    font-size: 2.8rem !important;
+    font-weight: 800 !important;
+    margin-top: 40px !important;
+    margin-bottom: 5px !important;
+    letter-spacing: -1px;
+    background: linear-gradient(120deg, var(--notion-text) 0%, var(--notion-muted) 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    border: none !important;
+    animation: fadeDown 0.8s ease-out;
+}
+
+/* The Subtitle (First paragraph after H1) */
+.notion-dashboard h1 + p {
+    font-size: 1.1rem;
+    color: var(--notion-muted);
+    font-weight: 500;
+    margin-top: 0 !important;
+    margin-bottom: 30px !important;
+    animation: fadeDown 0.8s ease-out;
+}
+
+/* --- QUICK ACTIONS DOCK --- */
+/* Targeting a specific callout named 'quick-actions' */
+.notion-dashboard .callout[data-callout="quick-actions"] {
+    background: transparent !important;
+    border: none !important;
+    box-shadow: none !important;
+    padding: 0 !important;
+    margin-bottom: 50px !important;
+    animation: fadeUp 0.8s ease-out 0.2s both;
+}
+
+/* Hide the callout title completely */
+.notion-dashboard .callout[data-callout="quick-actions"] .callout-title {
+    display: none !important;
+}
+
+.notion-dashboard .callout[data-callout="quick-actions"] .callout-content {
+    display: block !important;
+}
+
+/* Transform the Bulleted List into a Flexbox Dock */
+.notion-dashboard .callout[data-callout="quick-actions"] ul {
+    display: flex !important;
+    gap: 15px !important;
+    flex-wrap: wrap;
+    list-style: none !important;
+    padding: 0 !important;
+    margin: 0 !important;
+}
+
+.notion-dashboard .callout[data-callout="quick-actions"] ul li {
+    margin: 0 !important;
+}
+
+/* Style the links inside the Quick Actions list */
+.notion-dashboard .callout[data-callout="quick-actions"] a.internal-link, 
+.notion-dashboard .callout[data-callout="quick-actions"] a.external-link {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 12px 20px;
+    background: var(--notion-card);
+    border: 1px solid var(--background-modifier-border);
+    border-radius: 12px;
+    color: var(--notion-text) !important;
+    text-decoration: none !important;
+    font-weight: 600;
+    font-size: 0.95rem;
+    transition: all 0.2s ease;
+}
+
+.notion-dashboard .callout[data-callout="quick-actions"] a.internal-link:hover, 
+.notion-dashboard .callout[data-callout="quick-actions"] a.external-link:hover {
+    background: var(--notion-accent);
+    color: var(--text-on-accent, white) !important;
+    transform: translateY(-2px);
+    box-shadow: 0 8px 15px rgba(0, 0, 0, 0.1);
+    border-color: var(--notion-accent);
+}
+
+/* Remove default link icons */
+.notion-dashboard .callout[data-callout="quick-actions"] a.external-link::after {
+    display: none !important;
+}
+
+
+/* --- ACTIVE WORKSPACES (GRID OF LISTS) --- */
+.notion-dashboard h2 {
+    font-size: 1.4rem !important;
+    font-weight: 700 !important;
+    color: var(--notion-text);
+    margin: 0 0 20px 0 !important;
+    border-bottom: 1px solid var(--background-modifier-border) !important;
+    padding-bottom: 8px !important;
+}
+
+/* Transform the top-level unordered list below the H2 into a Grid */
+.notion-dashboard h2 + ul {
+    display: grid !important;
+    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)) !important;
+    gap: 24px !important;
+    list-style: none !important;
+    padding: 0 !important;
+    margin-bottom: 50px !important;
+}
+
+/* Each top-level list item is a CARD */
+.notion-dashboard h2 + ul > li {
+    background: var(--notion-bg);
+    border: 1px solid var(--background-modifier-border);
+    border-radius: 16px;
+    padding: 24px !important;
+    display: flex;
+    flex-direction: column;
+    transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+    margin: 0 !important;
+    position: relative;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.03);
+}
+
+.notion-dashboard h2 + ul > li:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 12px 24px rgba(0, 0, 0, 0.08);
+    border-color: var(--notion-muted);
+}
+
+/* Remove main bullet point icon from Cards */
+.notion-dashboard h2 + ul > li::before {
+    display: none !important;
+}
+
+/* Style the Card Header (H3) */
+.notion-dashboard h2 + ul > li h3 {
+    font-size: 1.3rem !important;
+    font-weight: 700 !important;
+    margin-top: 5px !important;
+    margin-bottom: 8px !important;
+    border: none !important;
+    padding: 0 !important;
+}
+
+/* Style the Card Paragraph (Description) */
+.notion-dashboard h2 + ul > li > p {
+    color: var(--notion-muted);
+    font-size: 0.9rem;
+    line-height: 1.5;
+    margin-top: 0 !important;
+    margin-bottom: 20px !important;
+}
+
+/* The Link Container inside the Card (Nested UL) */
+.notion-dashboard h2 + ul ul {
+    list-style: none !important;
+    padding: 0 !important;
+    margin: 0 !important;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    margin-bottom: 15px !important;
+}
+
+.notion-dashboard h2 + ul ul li {
+    margin: 0 !important;
+}
+
+.notion-dashboard h2 + ul ul > li::before {
+    display: none !important;
+}
+
+/* Style individual Links inside Cards */
+.notion-dashboard h2 + ul ul a.internal-link {
+    display: flex;
+    align-items: center;
+    padding: 8px 12px;
+    border-radius: 8px;
+    color: var(--notion-text) !important;
+    text-decoration: none !important;
+    font-weight: 500;
+    font-size: 0.95rem;
+    transition: all 0.2s ease;
+    background: transparent;
+}
+
+.notion-dashboard h2 + ul ul a.internal-link::before {
+    content: '📄';
+    margin-right: 12px;
+    font-size: 1.1rem;
+    opacity: 0.7;
+}
+
+.notion-dashboard h2 + ul ul a.internal-link:hover {
+    background: var(--background-secondary-alt);
+    color: var(--notion-accent) !important;
+    transform: translateX(4px);
+}
+
+/* Style the "View All" footer link */
+.notion-dashboard h2 + ul > li > .internal-link:last-child {
+    margin-top: auto;
+    color: var(--notion-muted) !important;
+    font-size: 0.9rem;
+    font-weight: 600;
+    text-decoration: none !important;
+    transition: color 0.2s;
+    display: inline-flex;
+    align-items: center;
+    padding: 5px 0;
+}
+
+.notion-dashboard h2 + ul > li > .internal-link:last-child:hover {
+    color: var(--notion-accent) !important;
+}
+
+.notion-dashboard h2 + ul > li > .internal-link:last-child::after {
+    content: '→';
+    margin-left: 5px;
+    transition: transform 0.2s;
+}
+
+.notion-dashboard h2 + ul > li > .internal-link:last-child:hover::after {
+    transform: translateX(3px);
+}
+
+
+/* --- EMBED CONTAINERS --- */
+.notion-dashboard .internal-embed {
+    border-radius: 16px !important;
+    overflow: hidden !important;
+    border: 1px solid var(--background-modifier-border) !important;
+    box-shadow: inset 0 2px 10px rgba(0,0,0,0.05);
+}
+
+/* Animations */
+@keyframes fadeDown {
+    from { opacity: 0; transform: translateY(-20px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes fadeUp {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+}
