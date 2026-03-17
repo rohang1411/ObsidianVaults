@@ -26,11 +26,11 @@ SDE -
 	5. Quality Control & Verification:
 		   Once changes are made, rigorously recheck the modified lines. Ensure perfect spelling, grammar, clarity, and tense consistency (past tense for past roles, present for current). Ensure the updated points still convey maximum professional impact.
 	   
-	6. ATS Match Evaluation:
-		   After making all tailoring adjustments, perform a simulated ATS scan of the newly tailored resume against the provided Job Description to calculate a final match score.
+	6. ATS Match Evaluation & Gap Analysis::
+		   After making all tailoring adjustments, perform a simulated ATS scan of the newly tailored resume against the provided Job Description to calculate a final match score out of 100.
 
 	Output Requirements:
-		- Targeted ATS Score (0-100): Provide an estimated ATS match score for the updated resume against the JD, along with a 1-2 sentence justification explaining the score.
+		- Targeted ATS Score & Gap Analysis (0-100): Provide the estimated ATS match score. If the score is less than 100: You must explicitly list the exact reasons why it fell short. Provide a clear, actionable breakdown of the missing experiences, metrics, or keywords preventing a perfect score, and tell me exactly what needs to be added (and where) to achieve a 100.
 		- Change Log: Briefly list the exact keywords added to the Skills section, any Role Titles changed, and a short explanation of any bullet points altered (showing the "Before" and "After").
 
 	The Code:
