@@ -26,37 +26,6 @@
 			"height":80
 		},
 		{
-			"id":"4c7436ca3af60dbe",
-			"type":"text",
-			"text":"🟠 \"lora-updates\" Kafka Topic",
-			"styleAttributes":{"textAlign":"center"},
-			"x":520,
-			"y":-220,
-			"width":280,
-			"height":90,
-			"color":"2"
-		},
-		{
-			"id":"0329c900078fb0bc",
-			"type":"text",
-			"text":"Trainer.py",
-			"styleAttributes":{"textAlign":"center"},
-			"x":120,
-			"y":-360,
-			"width":260,
-			"height":60
-		},
-		{
-			"id":"84702fdbd539873e",
-			"type":"text",
-			"text":"",
-			"styleAttributes":{},
-			"x":120,
-			"y":-280,
-			"width":260,
-			"height":300
-		},
-		{
 			"id":"23444c1efd2816b8",
 			"type":"text",
 			"text":"Inference.py",
@@ -75,16 +44,6 @@
 			"y":-280,
 			"width":260,
 			"height":300
-		},
-		{
-			"id":"354ef11bac588c29",
-			"type":"text",
-			"text":"",
-			"styleAttributes":{},
-			"x":520,
-			"y":-100,
-			"width":280,
-			"height":190
 		},
 		{
 			"id":"ebf2b868147932e6",
@@ -126,6 +85,47 @@
 			"width":280,
 			"height":90,
 			"color":"2"
+		},
+		{
+			"id":"4c7436ca3af60dbe",
+			"type":"text",
+			"text":"🟠 \"lora-updates\" Kafka Topic",
+			"styleAttributes":{"textAlign":"center"},
+			"x":520,
+			"y":-220,
+			"width":280,
+			"height":90,
+			"color":"2"
+		},
+		{
+			"id":"0329c900078fb0bc",
+			"type":"text",
+			"text":"Trainer.py",
+			"styleAttributes":{"textAlign":"center"},
+			"x":120,
+			"y":-360,
+			"width":260,
+			"height":60
+		},
+		{
+			"id":"84702fdbd539873e",
+			"type":"text",
+			"text":"",
+			"styleAttributes":{},
+			"x":120,
+			"y":-280,
+			"width":260,
+			"height":300
+		},
+		{
+			"id":"354ef11bac588c29",
+			"type":"text",
+			"text":"",
+			"styleAttributes":{},
+			"x":520,
+			"y":-100,
+			"width":280,
+			"height":190
 		},
 		{
 			"id":"74d1f40e8885fd56",
