@@ -58,3 +58,24 @@ Infinitune-Realtime-LLM-Fine-Tuning-Framework/
 ├── inference_api.py        # Flask API endpoint to serve prompts and hot-swap weights 
 └── ... (other project files)
 ```
+
+
+### Running Steps (Windows) -
+
+#### Running Kafka -
+
+Starting Zookeeper
+`C:\Apps\Kafka\bin\windows\zookeeper-server-start.bat C:\Apps\Kafka\config\zookeeper.properties`
+
+Starting Kafka
+`C:\Apps\Kafka\bin\windows\kafka-server-start.bat C:\Apps\Kafka\config\server.properties`
+
+##### Reference - 
+```embed
+title: "No Docker, No Problem: Run Apache Kafka on Windows"
+image: "https://media2.dev.to/dynamic/image/width=1000,height=500,fit=cover,gravity=auto,format=auto/https%3A%2F%2Fdev-to-uploads.s3.amazonaws.com%2Fuploads%2Farticles%2F73gcgsoy4jauy2uhheox.png"
+description: "Getting Kafka up and running without Docker on a Windows machine might seem like navigating a..."
+url: "https://dev.to/vijayrodrigues/no-docker-no-problem-run-apache-kafka-on-windows-4kc9"
+favicon: "https://media2.dev.to/dynamic/image/width=32,height=,fit=scale-down,gravity=auto,format=auto/https%3A%2F%2Fdev-to-uploads.s3.amazonaws.com%2Fuploads%2Farticles%2F8j7kvp660rqzt99zui8e.png"
+aspectRatio: "50"
+```
