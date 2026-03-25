@@ -5,6 +5,49 @@ SDE -
 
 1. Role: Act as an elite Technical Recruiter, ATS (Applicant Tracking System) Optimization Expert, and LaTeX formatting specialist.
    
+   Context & Objective: I am providing a Job Description (JD) and the LaTeX source code of my resume. My resume’s bullet points have already been rigorously optimized by industry experts for ATS performance and impact.
+   
+   Your objective is to tailor this resume to the provided JD by maximizing keyword overlap, and then evaluate how well the final tailored version matches the JD. You must operate under a strict "Do No Harm / Minimal Intervention" mandate for the bullet points.
+   
+   Execution Rules (Strictly follow this order):
+   
+   The Skills Section (Primary Target): Extract all relevant technical skills, tools, and methodologies from the JD. Integrate as many of these missing keywords as logically possible into my existing Skills section. Group them appropriately within my current categories (e.g., Languages, Frameworks, Tools).
+   
+   Role Title Optimization: Analyze my current role titles. If making a slight, truthful adjustment to a title (e.g., changing "Software Engineer" to "Backend Developer" or "SDE") creates a significantly stronger ATS match based on the JD, make the change.
+   
+   Bullet Point Modification (High-Threshold Rule):
+   Constraint: Do NOT rewrite bullet points just to sound different. 
+   You may only modify a bullet point if a critical keyword from the JD cannot naturally fit into the Skills section (e.g., a specific business impact term, architectural concept, or soft skill), AND adding it makes a massive difference in matching the JD.
+   
+   Surgical Integration: If you must add a keyword to a bullet point, weave it in seamlessly. It must not feel forcibly stuffed or disrupt the existing "Action Verb + Task + Impact" structure. It must feel highly appropriate for the context of that specific bullet.
+   
+   Formatting Preservation: Make absolutely ZERO changes to the LaTeX formatting, macros, document structure, spacing, or dates. The structural code must remain identical.
+   
+   Quality Control & Verification: Once changes are made, rigorously recheck the modified lines. Ensure perfect spelling, grammar, clarity, and tense consistency (past tense for past roles, present for current). Ensure the updated points still convey maximum professional impact.
+   
+   ATS Match Evaluation & Gap Analysis:: After making all tailoring adjustments, perform a simulated ATS scan of the newly tailored resume against the provided Job Description to calculate a final match score out of 100.
+   
+   Output Requirements:
+
+	- Targeted ATS Score & Gap Analysis (0-100): Provide the estimated ATS match score. If the score is less than 100: You must explicitly list the exact reasons why it fell short. Provide a clear, actionable breakdown of the missing experiences, metrics, or keywords preventing a perfect score, and tell me exactly what needs to be added (and where) to achieve a 100.
+
+	- Change Log: Briefly list the exact keywords added to the Skills section, any Role Titles changed, and a short explanation of any bullet points altered (showing the "Before" and "After").
+	
+	
+	The Code:
+	- IF you only made changes to the Skills section: Output ONLY the LaTeX code for that specific section.
+
+	- IF you made changes to Role Titles or Bullet Points: Output the ENTIRE LaTeX code of the resume.
+	
+	Job Title - Developer Technology Intern, High-Performance Databases - Summer 2026
+	
+	Job Description -
+
+
+Old -
+
+2. Role: Act as an elite Technical Recruiter, ATS (Applicant Tracking System) Optimization Expert, and LaTeX formatting specialist.
+   
    Context & Objective:
    I am providing a Job Description (JD) and the LaTeX source code of my resume. My resume’s bullet points have already been rigorously optimized by industry experts for ATS performance and impact.
    Your objective is to tailor this resume to the provided JD by maximizing keyword overlap, and then evaluate how well the final tailored version matches the JD. You must operate under a strict "Do No Harm / Minimal Intervention" mandate for the bullet points.
@@ -36,13 +79,12 @@ SDE -
 	The Code:
 		- IF you only made changes to the Skills section: Output ONLY the LaTeX code for that specific section.
 		- IF you made changes to Role Titles or Bullet Points: Output the ENTIRE LaTeX code of the resume.
-
-
-Job Title - Software Engineer Intern, Cloud Services - HP IQ
-
-Job Description -
-
-LaTeX Resume Code -
+	
+	Job Title - Software Engineer Intern, Cloud Services - HP IQ
+	
+	Job Description -
+	
+	LaTeX Resume Code -
 
 
 
