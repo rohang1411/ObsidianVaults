@@ -50,3 +50,6 @@ Job Description -
 Company's LinkedIn profile - 
 
 Question to answer in job application -
+
+
+Make the answer more about the company, and why I like this role, How can I contribute than just spitting out facts from my resume. Write the answer like a computer science student that shows I'm genuinely interested in the role. While answering the questions, remember that they already have my resume, so no point of stating the same information again. So the goal is to connect the needs of the company with my background in convincing way. The answers should be clear, concise and to the point as a recruiter hardly has a few seconds to read.
