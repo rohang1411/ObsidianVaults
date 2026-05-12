@@ -1,0 +1,15 @@
+1. IR Exam -
+
+I want to generate a CHEAT SHEET for my exam tomorrow. So. All the slides are present in @contextScopeItemMention file and all the notes are present in the Notes folder as markdown files . The professor gave us some clues about the questions that are going to come in the exam tomorrow. Those are present in @contextScopeItemMention file. I gave the @contextScopeItemMentionfile to multiple a agents and tried to deduce what topics and questions that might come in the exam. All of that analysis and possible questions are present in the Hints folder in file @contextScopeItemMention.  
+  
+First go through all the slides in detail, then go through all the notes, then go through the Hints and possible questions file (@contextScopeItemMention), and then finally go through the @contextScopeItemMentionfile to check if you can find any other clue. Make sure that you have all the understanding of all the files and everything that is going to come in the exam then. You have processed a lot of information, don't get confused. Make sure you have a clear understanding of everything and nothing is left.  
+  
+Prepare a plan to create a CHEAT SHEET that contains every single thing. That might help me in the exam tomorrow. Make sure that the CHEAT SHEET is clear, concise, and contains everything that I have to write tomorrow in my answers for my subjective exam. Use short, bullet points that contain all the important information and any formulas that might be required.  
+  
+Once done, review the cheat sheet as a senior professor of information retrieval and Agentic AI. The answers should contain everything that the professor wants. And then as a computer science student. It should contain everything that the student should mention in his answers. The answers don't have to be very long, but they should be correct, logical and complete. The professor likes to have examples for many things, so make sure to include enough examples and use cases.  
+  
+We are only allowed to carry an A4 size paper for CHEAT SHEET, that can have content on both sides. So try to make sure that the font is very small and fit as much content as possible on it. Nothing important should be left.  
+  
+Once you have done the analysis and review the CHEAT SHEET again, go over the entire CHEAT SHEET to check if there are any errors. Fix them if there are any or if any wording is missed that the professor might want. And make any other changes if required and then give me the final CHEAT SHEET. Along with the CHEAT SHEET. Create a markdown file that has all the content of the CHEAT SHEET. This will be an additional file. But the content should be exactly the same in the CHEAT SHEET and in the markdown file.  
+  
+Think in detail, take your time. And make sure everything is correct. The exam is very critical.
