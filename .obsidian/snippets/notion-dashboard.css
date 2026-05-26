@@ -1,272 +1,281 @@
-/* =========================================
-   Notion-Style Aesthetic Dashboard CSS
-   For Native Obsidian Markdown
-   ========================================= */
+/* Modern Obsidian vault home dashboard */
 
 body {
-    --notion-bg: var(--background-primary);
-    --notion-card: var(--background-secondary);
-    --notion-accent: var(--interactive-accent);
-    --notion-text: var(--text-normal);
-    --notion-muted: var(--text-muted);
+    --home-bg: var(--background-primary);
+    --home-card: color-mix(in srgb, var(--background-secondary) 88%, var(--interactive-accent) 12%);
+    --home-card-soft: var(--background-secondary);
+    --home-border: var(--background-modifier-border);
+    --home-border-strong: var(--background-modifier-border-hover);
+    --home-accent: var(--interactive-accent);
+    --home-text: var(--text-normal);
+    --home-muted: var(--text-muted);
 }
 
-/* Base Dashboard Tuning */
-.notion-dashboard {
-    max-width: 900px !important;
+.notion-dashboard,
+.vault-home {
+    max-width: 1100px !important;
     margin: 0 auto;
-    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif;
+    font-family: var(--font-interface);
 }
 
-/* Hide Default Page Title when using Banners */
-.notion-dashboard .markdown-preview-view h1.page-title,
-.notion-dashboard .cm-heading.cm-heading-1 {
-    display: none !important;
+.vault-home.markdown-preview-view,
+.vault-home .markdown-preview-section {
+    padding-bottom: 80px;
 }
 
-/* --- THE WELCOME HEADER (H1) --- */
-.notion-dashboard h1 {
-    font-size: 2.8rem !important;
-    font-weight: 800 !important;
-    margin-top: 40px !important;
-    margin-bottom: 5px !important;
-    letter-spacing: -1px;
-    background: linear-gradient(120deg, var(--notion-text) 0%, var(--notion-muted) 100%);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    border: none !important;
-    animation: fadeDown 0.8s ease-out;
-}
-
-/* The Subtitle (First paragraph after H1) */
-.notion-dashboard h1 + p {
-    font-size: 1.1rem;
-    color: var(--notion-muted);
-    font-weight: 500;
-    margin-top: 0 !important;
-    margin-bottom: 30px !important;
-    animation: fadeDown 0.8s ease-out;
-}
-
-/* --- QUICK ACTIONS DOCK --- */
-/* Targeting a specific callout named 'quick-actions' */
-.notion-dashboard .callout[data-callout="quick-actions"] {
-    background: transparent !important;
-    border: none !important;
-    box-shadow: none !important;
-    padding: 0 !important;
-    margin-bottom: 50px !important;
-    animation: fadeUp 0.8s ease-out 0.2s both;
-}
-
-/* Hide the callout title completely */
-.notion-dashboard .callout[data-callout="quick-actions"] .callout-title {
-    display: none !important;
-}
-
-.notion-dashboard .callout[data-callout="quick-actions"] .callout-content {
-    display: block !important;
-}
-
-/* Transform the Bulleted List into a Flexbox Dock */
-.notion-dashboard .callout[data-callout="quick-actions"] ul {
-    display: flex !important;
-    gap: 15px !important;
-    flex-wrap: wrap;
-    list-style: none !important;
-    padding: 0 !important;
-    margin: 0 !important;
-}
-
-.notion-dashboard .callout[data-callout="quick-actions"] ul li {
-    margin: 0 !important;
-}
-
-/* Style the links inside the Quick Actions list */
-.notion-dashboard .callout[data-callout="quick-actions"] a.internal-link, 
-.notion-dashboard .callout[data-callout="quick-actions"] a.external-link {
-    display: flex;
-    align-items: center;
-    gap: 8px;
-    padding: 12px 20px;
-    background: var(--notion-card);
-    border: 1px solid var(--background-modifier-border);
-    border-radius: 12px;
-    color: var(--notion-text) !important;
-    text-decoration: none !important;
-    font-weight: 600;
-    font-size: 0.95rem;
-    transition: all 0.2s ease;
-}
-
-.notion-dashboard .callout[data-callout="quick-actions"] a.internal-link:hover, 
-.notion-dashboard .callout[data-callout="quick-actions"] a.external-link:hover {
-    background: var(--notion-accent);
-    color: var(--text-on-accent, white) !important;
-    transform: translateY(-2px);
-    box-shadow: 0 8px 15px rgba(0, 0, 0, 0.1);
-    border-color: var(--notion-accent);
-}
-
-/* Remove default link icons */
-.notion-dashboard .callout[data-callout="quick-actions"] a.external-link::after {
-    display: none !important;
-}
-
-
-/* --- ACTIVE WORKSPACES (GRID OF LISTS) --- */
-.notion-dashboard h2 {
-    font-size: 1.4rem !important;
-    font-weight: 700 !important;
-    color: var(--notion-text);
-    margin: 0 0 20px 0 !important;
-    border-bottom: 1px solid var(--background-modifier-border) !important;
-    padding-bottom: 8px !important;
-}
-
-/* Transform the top-level unordered list below the H2 into a Grid */
-.notion-dashboard h2 + ul {
-    display: grid !important;
-    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)) !important;
-    gap: 24px !important;
-    list-style: none !important;
-    padding: 0 !important;
-    margin-bottom: 50px !important;
-}
-
-/* Each top-level list item is a CARD */
-.notion-dashboard h2 + ul > li {
-    background: var(--notion-bg);
-    border: 1px solid var(--background-modifier-border);
-    border-radius: 16px;
-    padding: 24px !important;
-    display: flex;
-    flex-direction: column;
-    transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
-    margin: 0 !important;
-    position: relative;
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.03);
-}
-
-.notion-dashboard h2 + ul > li:hover {
-    transform: translateY(-4px);
-    box-shadow: 0 12px 24px rgba(0, 0, 0, 0.08);
-    border-color: var(--notion-muted);
-}
-
-/* Remove main bullet point icon from Cards */
-.notion-dashboard h2 + ul > li::before {
-    display: none !important;
-}
-
-/* Style the Card Header (H3) */
-.notion-dashboard h2 + ul > li h3 {
-    font-size: 1.3rem !important;
-    font-weight: 700 !important;
-    margin-top: 5px !important;
+.vault-home h1 {
+    margin-top: 34px !important;
     margin-bottom: 8px !important;
-    border: none !important;
-    padding: 0 !important;
+    border: 0 !important;
+    font-size: 3rem !important;
+    line-height: 1.05;
+    font-weight: 850 !important;
+    letter-spacing: 0;
 }
 
-/* Style the Card Paragraph (Description) */
-.notion-dashboard h2 + ul > li > p {
-    color: var(--notion-muted);
-    font-size: 0.9rem;
-    line-height: 1.5;
+.vault-home h1 + p {
+    max-width: 760px;
     margin-top: 0 !important;
-    margin-bottom: 20px !important;
+    margin-bottom: 24px !important;
+    color: var(--home-muted);
+    font-size: 1.08rem;
+    line-height: 1.55;
 }
 
-/* The Link Container inside the Card (Nested UL) */
-.notion-dashboard h2 + ul ul {
-    list-style: none !important;
+.vault-home h2 {
+    margin-top: 38px !important;
+    margin-bottom: 14px !important;
+    padding-bottom: 8px !important;
+    border-bottom: 1px solid var(--home-border) !important;
+    font-size: 1.25rem !important;
+    font-weight: 760 !important;
+    letter-spacing: 0;
+}
+
+.vault-home .callout[data-callout="quick-actions"] {
+    margin: 18px 0 26px !important;
     padding: 0 !important;
-    margin: 0 !important;
-    display: flex;
-    flex-direction: column;
-    gap: 8px;
-    margin-bottom: 15px !important;
+    border: 0 !important;
+    background: transparent !important;
+    box-shadow: none !important;
 }
 
-.notion-dashboard h2 + ul ul li {
-    margin: 0 !important;
-}
-
-.notion-dashboard h2 + ul ul > li::before {
+.vault-home .callout[data-callout="quick-actions"] .callout-title {
     display: none !important;
 }
 
-/* Style individual Links inside Cards */
-.notion-dashboard h2 + ul ul a.internal-link {
-    display: flex;
-    align-items: center;
-    padding: 8px 12px;
-    border-radius: 8px;
-    color: var(--notion-text) !important;
-    text-decoration: none !important;
-    font-weight: 500;
-    font-size: 0.95rem;
-    transition: all 0.2s ease;
-    background: transparent;
+.vault-home .callout[data-callout="quick-actions"] .callout-content {
+    margin: 0 !important;
 }
 
-.notion-dashboard h2 + ul ul a.internal-link::before {
-    content: '📄';
-    margin-right: 12px;
-    font-size: 1.1rem;
-    opacity: 0.7;
+.vault-home .callout[data-callout="quick-actions"] ul {
+    display: flex !important;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin: 0 !important;
+    padding: 0 !important;
+    list-style: none !important;
 }
 
-.notion-dashboard h2 + ul ul a.internal-link:hover {
-    background: var(--background-secondary-alt);
-    color: var(--notion-accent) !important;
-    transform: translateX(4px);
+.vault-home .callout[data-callout="quick-actions"] li {
+    margin: 0 !important;
 }
 
-/* Style the "View All" footer link */
-.notion-dashboard h2 + ul > li > .internal-link:last-child {
-    margin-top: auto;
-    color: var(--notion-muted) !important;
-    font-size: 0.9rem;
-    font-weight: 600;
-    text-decoration: none !important;
-    transition: color 0.2s;
+.vault-home .callout[data-callout="quick-actions"] a {
     display: inline-flex;
     align-items: center;
-    padding: 5px 0;
+    min-height: 36px;
+    padding: 8px 13px;
+    border: 1px solid var(--home-border);
+    border-radius: 8px;
+    background: var(--home-card-soft);
+    color: var(--home-text) !important;
+    font-size: 0.9rem;
+    font-weight: 650;
+    text-decoration: none !important;
+    transition: background 140ms ease, border-color 140ms ease, transform 140ms ease;
 }
 
-.notion-dashboard h2 + ul > li > .internal-link:last-child:hover {
-    color: var(--notion-accent) !important;
+.vault-home .callout[data-callout="quick-actions"] a:hover {
+    border-color: var(--home-accent);
+    background: var(--home-card);
+    transform: translateY(-1px);
 }
 
-.notion-dashboard h2 + ul > li > .internal-link:last-child::after {
-    content: '→';
-    margin-left: 5px;
-    transition: transform 0.2s;
+.vault-home .home-stats {
+    display: grid;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    gap: 12px;
+    margin: 18px 0 30px;
 }
 
-.notion-dashboard h2 + ul > li > .internal-link:last-child:hover::after {
-    transform: translateX(3px);
+.vault-home .home-stats > div {
+    padding: 18px;
+    border: 1px solid var(--home-border);
+    border-radius: 8px;
+    background: var(--home-card-soft);
 }
 
+.vault-home .home-stats span {
+    display: block;
+    font-size: 1.9rem;
+    line-height: 1;
+    font-weight: 850;
+    color: var(--home-text);
+}
 
-/* --- EMBED CONTAINERS --- */
-.notion-dashboard .internal-embed {
-    border-radius: 16px !important;
+.vault-home .home-stats small {
+    display: block;
+    margin-top: 7px;
+    color: var(--home-muted);
+    font-size: 0.78rem;
+    font-weight: 650;
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+}
+
+.vault-home h2 + ul {
+    display: grid !important;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)) !important;
+    gap: 16px !important;
+    margin: 0 0 28px !important;
+    padding: 0 !important;
+    list-style: none !important;
+}
+
+.vault-home h2 + ul > li {
+    position: relative;
+    margin: 0 !important;
+    padding: 20px !important;
+    border: 1px solid var(--home-border);
+    border-radius: 8px;
+    background: var(--home-card-soft);
+    overflow: hidden;
+}
+
+.vault-home h2 + ul > li::before {
+    display: none !important;
+}
+
+.vault-home h2 + ul > li::after {
+    content: "";
+    position: absolute;
+    inset: 0 0 auto;
+    height: 3px;
+    background: var(--home-accent);
+    opacity: 0.85;
+}
+
+.vault-home h2 + ul > li h3 {
+    margin: 2px 0 8px !important;
+    padding: 0 !important;
+    border: 0 !important;
+    font-size: 1.08rem !important;
+    font-weight: 780 !important;
+    letter-spacing: 0;
+}
+
+.vault-home h2 + ul > li > p {
+    margin: 0 0 14px !important;
+    color: var(--home-muted);
+    font-size: 0.9rem;
+    line-height: 1.45;
+}
+
+.vault-home h2 + ul ul {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+    margin: 0 !important;
+    padding: 0 !important;
+    list-style: none !important;
+}
+
+.vault-home h2 + ul ul li {
+    margin: 0 !important;
+}
+
+.vault-home h2 + ul ul li::before {
+    display: none !important;
+}
+
+.vault-home h2 + ul ul a.internal-link {
+    display: block;
+    padding: 6px 8px;
+    border-radius: 6px;
+    color: var(--home-text) !important;
+    text-decoration: none !important;
+    font-size: 0.9rem;
+    line-height: 1.3;
+}
+
+.vault-home h2 + ul ul a.internal-link:hover {
+    background: color-mix(in srgb, var(--home-accent) 14%, transparent);
+    color: var(--home-accent) !important;
+}
+
+.vault-home .dataview,
+.vault-home .block-language-dataview,
+.vault-home .block-language-dataviewjs,
+.vault-home .block-language-base,
+.vault-home .block-language-query,
+.vault-home .block-language-contributionGraph,
+.vault-home .block-language-search-bar {
+    border: 1px solid var(--home-border);
+    border-radius: 8px;
+    background: var(--home-card-soft);
+    overflow: hidden;
+}
+
+.vault-home table.dataview {
+    width: 100%;
+}
+
+.vault-home .tag-cloud-container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin-top: 8px;
+}
+
+.vault-home .tag-cloud-container .tag-chip {
+    display: inline-flex;
+    align-items: center;
+    gap: 7px;
+    padding: 7px 10px;
+    border: 1px solid var(--home-border);
+    border-radius: 999px;
+    background: var(--home-card-soft);
+    color: var(--home-text);
+    font-size: 0.86rem;
+    font-weight: 620;
+    text-decoration: none;
+}
+
+.vault-home .tag-cloud-container .tag-chip span {
+    color: var(--home-muted);
+    font-size: 0.78rem;
+}
+
+.vault-home .internal-embed {
+    border: 1px solid var(--home-border) !important;
+    border-radius: 8px !important;
     overflow: hidden !important;
-    border: 1px solid var(--background-modifier-border) !important;
-    box-shadow: inset 0 2px 10px rgba(0,0,0,0.05);
+    background: var(--home-card-soft);
 }
 
-/* Animations */
-@keyframes fadeDown {
-    from { opacity: 0; transform: translateY(-20px); }
-    to { opacity: 1; transform: translateY(0); }
+@media screen and (max-width: 760px) {
+    .vault-home h1 {
+        font-size: 2.25rem !important;
+    }
+
+    .vault-home .home-stats {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
 }
 
-@keyframes fadeUp {
-    from { opacity: 0; transform: translateY(20px); }
-    to { opacity: 1; transform: translateY(0); }
+@media screen and (max-width: 480px) {
+    .vault-home .home-stats {
+        grid-template-columns: 1fr;
+    }
 }
