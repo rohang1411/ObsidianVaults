@@ -25,6 +25,12 @@
     letter-spacing: 0;
 }
 
+.vault-home .metadata-container,
+.vault-home .metadata-properties-heading,
+.vault-home .metadata-content {
+    display: none !important;
+}
+
 .vault-dashboard {
     display: block;
 }
