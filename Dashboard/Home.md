@@ -74,7 +74,24 @@ const s = {
   queryCard: "padding:12px;border:1px solid var(--background-modifier-border);border-radius:10px;background:var(--background-secondary);",
   queryTitle: "display:block;color:var(--text-normal);font-size:14px;font-weight:800;",
   queryText: "display:block;margin-top:6px;padding:6px;border-radius:6px;background:var(--background-primary);color:var(--text-muted);font-family:var(--font-monospace);font-size:11px;line-height:1.25;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;",
-  path: "display:flex;flex-wrap:wrap;gap:8px;padding:14px;border:1px solid var(--background-modifier-border);border-radius:10px;background:var(--background-secondary);"
+  path: "display:flex;flex-wrap:wrap;gap:8px;padding:14px;border:1px solid var(--background-modifier-border);border-radius:10px;background:var(--background-secondary);",
+  visualGrid: "display:grid;grid-template-columns:minmax(0,1.25fr) minmax(260px,.75fr);gap:14px;margin:0 0 24px 0;",
+  mapPanel: "position:relative;min-height:360px;padding:18px;border:1px solid var(--background-modifier-border);border-radius:12px;background:radial-gradient(circle at 50% 48%,rgba(91,141,239,.16),transparent 32%),var(--background-secondary);overflow:hidden;",
+  mapGrid: "position:relative;z-index:2;display:grid;grid-template-columns:repeat(3,minmax(0,1fr));grid-template-rows:repeat(3,1fr);gap:12px;min-height:310px;",
+  mapCenter: "display:flex;flex-direction:column;align-items:center;justify-content:center;gap:6px;padding:18px;border:1px solid var(--interactive-accent);border-radius:999px;background:var(--background-primary);color:var(--text-normal);text-align:center;text-decoration:none;box-shadow:0 0 0 6px rgba(91,141,239,.08);",
+  mapNode: "display:flex;flex-direction:column;justify-content:center;min-height:82px;padding:12px;border:1px solid var(--background-modifier-border);border-radius:12px;background:var(--background-primary);color:var(--text-normal);text-decoration:none;",
+  mapNodeTitle: "display:block;font-size:14px;font-weight:800;line-height:1.2;",
+  mapNodeMeta: "display:block;margin-top:6px;color:var(--text-muted);font-size:12px;line-height:1.2;",
+  visualPanel: "padding:18px;border:1px solid var(--background-modifier-border);border-radius:12px;background:var(--background-secondary);",
+  barList: "display:grid;gap:10px;margin-top:12px;",
+  barRow: "display:grid;grid-template-columns:92px minmax(0,1fr) 34px;gap:10px;align-items:center;",
+  barLabel: "color:var(--text-normal);font-size:12px;font-weight:750;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;",
+  barTrack: "height:10px;border-radius:999px;background:var(--background-primary);overflow:hidden;",
+  barFill: "display:block;height:100%;border-radius:999px;background:linear-gradient(90deg,var(--interactive-accent),color-mix(in srgb,var(--interactive-accent) 45%,#7ee787));",
+  barNum: "color:var(--text-muted);font-size:12px;text-align:right;",
+  sparkGrid: "display:flex;align-items:end;gap:4px;height:58px;margin-top:12px;padding:10px;border:1px solid var(--background-modifier-border);border-radius:10px;background:var(--background-primary);",
+  sparkBar: "flex:1;min-width:7px;border-radius:4px 4px 2px 2px;background:linear-gradient(180deg,#7ee787,var(--interactive-accent));opacity:.9;",
+  legend: "display:flex;justify-content:space-between;gap:10px;margin-top:8px;color:var(--text-muted);font-size:11px;"
 };
 
 const workspaces = [
@@ -188,6 +205,42 @@ const queryCard = (title, query) => `
   </div>
 `;
 
+const areaSummary = [
+  ["Deep Learning", "Deep Learning", count("Deep Learning"), "Core ML study"],
+  ["Infinitune", "Infinitune/1. Project Overview/Project Readme", count("Infinitune"), "Project knowledge"],
+  ["Interview Prep", "Interview Prep/Basic CS Questions", count("Interview Prep"), "Interview readiness"],
+  ["Prompts", "Prompts/Prep Doc", count("Prompts"), "Reusable workflows"],
+  ["Coding", "LeetCode/355. Design Twitter", count("LeetCode"), "Practice"],
+  ["Utilities", "Dashboard", count("Tutorials") + 1, "Maps and setup"]
+];
+const maxArea = Math.max(...areaSummary.map(([, , value]) => value), 1);
+
+const mapNode = (label, path, value, subtitle, gridStyle) => `
+  <a class="internal-link" data-href="${safe(notePath(path))}" href="${safe(notePath(path))}" style="${s.mapNode}${gridStyle}">
+    <span style="${s.mapNodeTitle}">${safe(label)}</span>
+    <small style="${s.mapNodeMeta}">${value} notes · ${safe(subtitle)}</small>
+  </a>
+`;
+
+const areaBars = areaSummary.map(([label, , value]) => `
+  <div style="${s.barRow}">
+    <span style="${s.barLabel}">${safe(label)}</span>
+    <span style="${s.barTrack}"><span style="${s.barFill}width:${Math.max(8, Math.round((value / maxArea) * 100))}%;"></span></span>
+    <span style="${s.barNum}">${value}</span>
+  </div>
+`).join("");
+
+const activityDays = Array.from({ length: 14 }, (_, index) => {
+  const day = dv.date("today").minus({ days: 13 - index });
+  const key = day.toFormat("yyyy-MM-dd");
+  const value = pages.where(p => p.file.mtime.toFormat("yyyy-MM-dd") === key).length;
+  return { day, value };
+});
+const maxActivity = Math.max(...activityDays.map(d => d.value), 1);
+const sparkBars = activityDays.map(d => `
+  <span title="${d.day.toFormat("MMM d")}: ${d.value}" style="${s.sparkBar}height:${Math.max(8, Math.round((d.value / maxActivity) * 46))}px;opacity:${d.value ? ".95" : ".28"};"></span>
+`).join("");
+
 const root = dv.el("div", "", { cls: "vault-dashboard" });
 root.innerHTML = `
   <div style="${s.wrap}">
@@ -210,6 +263,41 @@ root.innerHTML = `
       <div style="${s.stat}"><strong style="${s.statNum}">${modifiedWithin(7)}</strong><span style="${s.statLabel}">Updated this week</span></div>
       <div style="${s.stat}"><strong style="${s.statNum}">${count("Deep Learning")}</strong><span style="${s.statLabel}">Deep Learning</span></div>
       <div style="${s.stat}"><strong style="${s.statNum}">${count("Infinitune")}</strong><span style="${s.statLabel}">Infinitune</span></div>
+    </section>
+
+    <div style="${s.sectionHead}">
+      <h2 style="${s.h2}">Vault Map</h2>
+      <p style="${s.sectionText}">A clickable view of how the major knowledge areas orbit your main dashboard.</p>
+    </div>
+    <section style="${s.visualGrid}">
+      <div style="${s.mapPanel}">
+        <div style="position:absolute;left:12%;right:12%;top:50%;height:1px;background:var(--background-modifier-border);"></div>
+        <div style="position:absolute;top:14%;bottom:14%;left:50%;width:1px;background:var(--background-modifier-border);"></div>
+        <div style="position:absolute;left:18%;right:18%;top:22%;height:1px;background:linear-gradient(90deg,transparent,var(--background-modifier-border),transparent);transform:rotate(24deg);"></div>
+        <div style="position:absolute;left:18%;right:18%;bottom:22%;height:1px;background:linear-gradient(90deg,transparent,var(--background-modifier-border),transparent);transform:rotate(-24deg);"></div>
+        <div style="${s.mapGrid}">
+          ${mapNode("Deep Learning", "Deep Learning/CheatSheet", count("Deep Learning"), "study base", "grid-column:1;grid-row:1;")}
+          ${mapNode("Infinitune", "Infinitune/1. Project Overview/Project Readme", count("Infinitune"), "project brain", "grid-column:3;grid-row:1;")}
+          ${mapNode("Prompts", "Prompts/Prep Doc", count("Prompts"), "execution", "grid-column:1;grid-row:2;")}
+          <a class="internal-link" data-href="Dashboard" href="Dashboard" style="${s.mapCenter}grid-column:2;grid-row:2;">
+            <strong style="font-size:16px;">Home</strong>
+            <small style="color:var(--text-muted);font-size:12px;">command center</small>
+          </a>
+          ${mapNode("Interview Prep", "Interview Prep/Basic CS Questions", count("Interview Prep"), "readiness", "grid-column:3;grid-row:2;")}
+          ${mapNode("Coding", "LeetCode/355. Design Twitter", count("LeetCode"), "practice", "grid-column:1;grid-row:3;")}
+          ${mapNode("Utilities", "Tutorials/Obsidian Setup Tutorial", count("Tutorials") + 1, "vault ops", "grid-column:3;grid-row:3;")}
+        </div>
+      </div>
+      <div style="${s.visualPanel}">
+        <h3 style="${s.h3}">Area Distribution</h3>
+        <p style="${s.desc}">Where your notes are concentrated.</p>
+        <div style="${s.barList}">${areaBars}</div>
+        <div style="height:18px;"></div>
+        <h3 style="${s.h3}">14-Day Activity</h3>
+        <p style="${s.desc}">Recent modification rhythm across the vault.</p>
+        <div style="${s.sparkGrid}">${sparkBars}</div>
+        <div style="${s.legend}"><span>${activityDays[0].day.toFormat("MMM d")}</span><span>Today</span></div>
+      </div>
     </section>
 
     <div style="${s.sectionHead}">
