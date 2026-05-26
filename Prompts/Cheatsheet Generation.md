@@ -35,6 +35,54 @@ Once you have done the analysis and review the CHEAT SHEET again, go over the en
 Think in detail, take your time. And make sure everything is correct. The exam is very critical.
 
 
+
+Follow up -
+
+Can you make sure that the cheatsheet covers everything and not only the things that I specifically asked to mention.
+
+Also can you a little bit more content -
+
+1. RDF just has half line explanation
+
+2. Can you change the comparision table into a simpler table that takes less space
+
+3. Add advantages and disadvantages of new approach vs old one wherever applicable, like Semantic search vs syntactic search, knowledege graph vs old approach
+
+4. Don't use the exact wordings from hint, that's just given to us to get an idea of what topics will be coming, either use the examples from the slides or notes or use new ones.
+
+5. Can you follow the order of slides and notes in the cheatsheet so that it will be easier for me to reference it.
+
+6. Remove the clue map and the last section that shows what an ideal answer is, they are wasting space. Use this space to improve other answers.
+
+7. Instead of having a separate section for examples, Which is currently the 2nd last section, add the examples and usecases with the content itself in their respective sections.
+
+8. I can't find any section for question answering.
+
+9. For some reason the section headings were higlighted in white color, remove the highlight
+
+10. Is it possible to write the formulas clearly, maybe in latex so that they are easier to understand, only if easily possible.
+
+11. Add some more explanation for each type of snippet
+
+12. Also reduce the space present before and after each section.
+
+13. Don't mention clues all over the cheatsheet.
+
+14. Can you add a simple comparision table fro K means and KNN
+
+15. Add some more examples and use cases everywhere
+
+16. The nuances that you have mentioned, add them to their respective sections so that I don't have to find them during the exam, instead of creating a separate section.
+
+17. Improve the explanation everywhere while trying to use the lines optimally
+
+18. Add some use cases of location/proximity based search as professor said that he might ask thins in the exam. Add some new ones, other than the ones discussed in class.
+
+19. Add a comparision table between different types of recommender systems and diffrent filtering used.
+
+Think in detail, once the answers are updated, review them as the professor and student to make sure every thing is covered, easy to read and understand.
+
+
 V1 -
 I want to generate a CHEAT SHEET for my exam tomorrow. So. All the slides are present in @contextScopeItemMention file and all the notes are present in the Notes folder as markdown files . The professor gave us some clues about the questions that are going to come in the exam tomorrow. Those are present in @contextScopeItemMention file. I gave the @contextScopeItemMentionfile to multiple a agents and tried to deduce what topics and questions that might come in the exam. All of that analysis and possible questions are present in the Hints folder in file @contextScopeItemMention.  
   
