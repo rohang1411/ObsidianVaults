@@ -43,7 +43,7 @@ SDE -
 	
 	Job Description -
 	
-	Latex Resume Code -
+		Latex Resume Code -
 
 Old -
 
