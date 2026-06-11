@@ -1,7 +1,73 @@
 
 The below prompts are for tailoring the resume for a specific job description
 
-SDE -
+## SDE -
+
+### V3 -
+
+Phase 1 — SDE Context Initialization
+
+Role: Act as an elite Technical Recruiter, ATS Algorithm Expert, and Senior Software
+Engineering Manager.
+
+Objective: Ingest the three documents provided below — Master Resume (LaTeX), Work
+Experience Context, and Project Context. Read each document carefully and completely.
+Do not generate a tailored resume yet.
+
+After reading, produce a structured synthesis that confirms your understanding. This
+synthesis is your working knowledge base for all future tailoring in this session.
+Format it exactly as follows:
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+SYNTHESIS REPORT
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+WORK EXPERIENCE
+For each role, list:
+  • Company | Role Title | Approximate Duration
+  • Tech stack used (languages, frameworks, tools, cloud services) — sourced only
+    from the documents; do not infer or add anything not explicitly stated
+  • 2–3 sentence description of the core engineering work done
+  • Key quantified achievements as stated in the documents (copy numbers exactly)
+
+PROJECTS
+For each project, list:
+  • Project Name | Your Role
+  • Tech stack used — sourced only from the documents
+  • 1–2 sentence description of what the project does and how it works technically
+  • Key quantified outcomes as stated in the documents
+
+SKILLS INVENTORY
+List every distinct technical skill, tool, framework, language, and platform mentioned
+anywhere across the three documents. Group into:
+  Languages | Backend Frameworks | Frontend | Cloud/DevOps | Databases | Other Tools
+
+GAPS AND AMBIGUITIES
+List anything unclear, inconsistent across documents, or missing that would be useful
+for resume tailoring (e.g., a metric stated vaguely, a tool named but not
+contextualized). Do not resolve these yourself — flag them for my review.
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+Non-Hallucination Principle:
+Everything in your synthesis must come directly from the provided documents. Do not
+infer experience from tool names alone. Do not assume a metric if one is not stated.
+Do not extrapolate project scope beyond what is written. If a detail is not in the
+documents, it does not exist in this session.
+
+Once I confirm your synthesis is accurate, you are ready for Phase 2.
+
+--- MY MASTER DATA ---
+[Paste your full LaTeX Resume code here]
+[Paste your Work Experience Context doc here]
+[Paste your Project Context doc here]
+
+
+
+
+
+
+### V2 -
 
 1. Role: Act as an elite Technical Recruiter, ATS (Applicant Tracking System) Optimization Expert, and LaTeX formatting specialist.
    
@@ -45,9 +111,9 @@ SDE -
 	
 		Latex Resume Code -
 
-Old -
-
-2. Role: Act as an elite Technical Recruiter, ATS (Applicant Tracking System) Optimization Expert, and LaTeX formatting specialist.
+### V1 -
+	
+Role: Act as an elite Technical Recruiter, ATS (Applicant Tracking System) Optimization Expert, and LaTeX formatting specialist.
    
    Context & Objective:
    I am providing a Job Description (JD) and the LaTeX source code of my resume. My resume’s bullet points have already been rigorously optimized by industry experts for ATS performance and impact.
@@ -95,4 +161,9 @@ Old -
 
 
 
-DS -
+
+
+
+## DS -
+
+
