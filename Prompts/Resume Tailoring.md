@@ -3,6 +3,160 @@ The below prompts are for tailoring the resume for a specific job description
 
 ## SDE -
 
+### V4 -
+
+#### Phase 1 — SDE Context Initialization (Run once initially)
+
+Role: Act as an elite Technical Recruiter, ATS Algorithm Expert, and Senior Software Engineering Manager.
+
+Objective: Ingest the three documents below — Master Resume (LaTeX), Work Experience Context, and Project Context. Read each carefully and completely. Do not generate a tailored resume yet.
+
+After reading, produce a Synthesis Report in this exact format:
+
+WORK EXPERIENCE
+For each role: Company | Role Title | Approximate Duration, the tech stack used (sourced only from the documents, do not infer), a 2-3 sentence description of the core engineering work, and key quantified achievements copied exactly as stated.
+
+PROJECTS
+For each project: Project Name | Your Role, the tech stack (sourced only from the documents), a 1-2 sentence description of what it does and how, and key quantified outcomes as stated.
+
+SKILLS INVENTORY
+Every distinct technical skill, tool, framework, language, and platform mentioned anywhere across the three documents, grouped into: Languages, Backend Frameworks, Frontend, Cloud/DevOps, Databases, Other Tools.
+
+GAPS AND AMBIGUITIES
+Anything unclear, inconsistent across documents, or missing that would affect tailoring (e.g., a vague metric, a tool named but not contextualized). Do not resolve these — flag them for my review.
+
+Non-Hallucination Principle: Everything in the synthesis must come directly from the provided documents. Do not infer experience from tool names, assume unstated metrics, or extrapolate project scope. If a detail is not in the documents, it does not exist in this session.
+
+Once I confirm your synthesis is accurate, you are ready for Phase 2.
+
+--- MY MASTER DATA ---
+[Paste your full LaTeX Resume code here]
+[Paste your Work Experience Context doc here]
+[Paste your Project Context doc here]
+
+
+#### Phase 2 — SDE Tailoring Engine (For every prompt)
+
+Role: Act as an elite Technical Recruiter, ATS Optimization Expert, Senior Software Engineer, and resume text editor.
+
+Task: Tailor my Master Resume to the provided SDE Job Description (JD). Maximize ATS keyword coverage while preserving natural readability, narrative coherence, and original content length.
+
+Core Philosophy: You are a surgical text editor, not a rewriter. Every change must make the resume strictly better. If a change does not clearly improve the resume, do not make it. Recruiter readability always takes priority over ATS score inflation. No modified bullet may exceed its original word count by more than 3-4 words. Length overruns cause reformatting work and are treated as a failed edit.
+
+
+STEP 1 - JD Keyword Extraction
+
+Read the full JD and extract every relevant technical keyword into two categories:
+A) Hard Skills / Tools / Frameworks (e.g., Kubernetes, gRPC, Redis, REST APIs)
+B) Conceptual / Architectural Skills (e.g., microservices, distributed systems, CI/CD pipelines)
+
+This keyword list drives all decisions in Steps 2-6.
+
+
+STEP 2 - Skills Section Placement (Two-Pass)
+
+This is the primary and preferred placement method for all JD keywords. Exhaust both passes fully before touching any bullet.
+
+Pass 1 - Direct Evidence: For any JD keyword explicitly named or used in the context documents, add it to the appropriate Skills group. Mark as resolved.
+
+Pass 2 - Contextual Inference: For keywords not placed in Pass 1, evaluate whether the documented work makes the skill logically certain or highly probable even if never explicitly named. A keyword qualifies if it meets any one of these criteria:
+- Component Inference: The skill is a direct named component of a documented system (e.g., deployed on AWS with EC2 implies cloud compute experience).
+- Terminology Inference: The skill is the standard industry term for something demonstrably done but described differently (e.g., "automated build and deploy scripts" implies CI/CD).
+- Prerequisite Inference: The skill is a technical prerequisite for the documented work (e.g., built and shipped a REST API implies HTTP and JSON handling).
+
+A keyword does not qualify if it represents capability never demonstrated in any documented context, is adjacent to their domain but not shown, or is a stretch where reasonable doubt exists. Log every inferred skill as "Inferred from [role/project name]" with one sentence of justification.
+
+
+STEP 3 - Narrative Dependency Mapping
+
+Before reordering anything, identify locked sequences within each section: any bullet that introduces a system, component, or context that a later bullet explicitly builds upon; any bullet that establishes the scale or problem setup that makes a subsequent achievement meaningful; any bullet describing a prerequisite step before its outcome. Locked sequences must never be broken regardless of JD relevance.
+
+
+STEP 4 - Conditional Bullet Reordering
+
+Reorder a bullet only if all three conditions are simultaneously met:
+A) The bullet is not part of a locked sequence identified in Step 3.
+B) Moving it would bring a bullet addressing a core JD requirement from position 3 or lower to position 1 within that section.
+C) The current top 1-2 bullets do not already address the same JD requirement.
+
+If the gain is marginal, do not reorder. Default is to preserve the original order.
+
+
+STEP 5 - Surgical Bullet Modification (Last Resort, High Bar)
+
+Only for JD keywords that could not be placed via either pass of Step 2. A modification requires all four gates to pass. If any gate fails, the keyword is a true gap — log it, do not force it.
+
+Gate 1 - Concept Exists: The bullet already describes work that embodies this skill. The concept is present, just expressed generically. This is a terminology upgrade, not introducing a new capability.
+Gate 2 - Zero New Claims: The modification introduces no new facts, metrics, or capabilities. The bullet's meaning does not change.
+Gate 3 - Significant Impact: A technical hiring manager would meaningfully change their assessment of this bullet's relevance to the JD. Cosmetic improvement does not pass this gate.
+Gate 4 - Naturalness and Length: Read the modified bullet aloud. It must sound at least as natural as the original and must not exceed the original word count by more than 3-4 words. If the injection requires more space than that, it fails this gate. One injected keyword per bullet maximum.
+
+If all four gates pass, make the minimal text change required — a terminology upgrade, not a sentence rewrite.
+
+
+STEP 6 - True Gap Logging
+
+Any JD keyword that could not be placed via Steps 2 or 5 is a true gap. For each: name it, confirm it is absent from both explicit documents and reasonable contextual inference, and suggest one specific actionable way to address it in a future resume version. Do not force placements to avoid logging a gap.
+
+
+STEP 7 - Professional Summary Optimization
+
+Rewrite the summary in 2-3 lines as a targeted hook for this SWE role. Mirror JD language on years of experience, core tech stack, and system design objectives. Use only documented facts. Introduce no new claims. Match the approximate character length of the original summary — do not write a longer summary that will overflow the resume layout.
+
+
+STEP 8 - Content Quality Audit
+
+Review every bullet in the resume, original and modified, against every item below and fix all failures before proceeding.
+
+Tense: Past tense for all non-current roles. Present tense for current role only.
+Action Verb Variety: No action verb repeated more than twice within a section. Swap repeats for a precise alternative.
+Banned Cliche Verbs: spearheaded, orchestrated, leveraged, utilized, fostered, delved, championed, harnessed. Replace with plain, direct alternatives.
+Banned Filler Words: various, multiple, several, robust, cutting-edge, innovative, complex, dynamic, seamless, end-to-end. Remove or replace.
+Bullet Structure: Every bullet follows Action Verb + Technical Task + Measurable Impact. Flag any bullet missing a quantifiable outcome in the Gap section if the context docs cannot supply a metric.
+Grammar: Confirm no awkward phrasing was introduced by any keyword injection. Check subject-verb agreement, article usage, and parallel structure within multi-part bullets.
+Injection Density: No single bullet contains more than one injected or modified keyword. If two keywords belong to the same bullet, choose the higher-JD-priority one and place the other in the Skills section.
+
+
+STEP 9 - Multi-Persona Review
+
+Silently evaluate the full draft before generating any output and fix every issue found.
+
+Senior Software Engineer lens: Are all system design concepts used in a technically accurate and contextually appropriate way? Does the reordering make logical sense for the JD's specific tech stack? Were any skills from the context docs that overlap with the JD overlooked?
+
+Recruiter lens: Is the most relevant experience visible within the first 6 seconds of scanning? Is every bullet immediately understandable to a technical recruiter? Does the overall resume feel cohesive, human-written, and internally consistent?
+
+
+OUTPUT FORMAT - Produce in this exact order.
+
+SECTION 1 - ATS Score and Gap Analysis
+Estimated ATS match score from 0-100.
+True gaps only (from Step 6): keyword, reason it could not be placed, one actionable suggestion for a future resume version.
+
+SECTION 2 - Change Log
+Skills added via Direct Evidence: keyword and the Skills group it was added to.
+Skills added via Contextual Inference: keyword, Skills group, one-sentence inference justification.
+Bullets reordered: section name, original position to new position, one-line justification referencing the three-gate test.
+Bullets modified: full BEFORE text and full AFTER text for each, and which gates justified the change.
+Content Quality Audit fixes applied, listed briefly.
+
+SECTION 3 - Change Report
+This is the only output you will produce for resume edits. Do not output any LaTeX code. For every change to be made — skills additions, bullet text modifications, bullet reordering, and summary rewrite — list it in this exact format:
+
+CHANGE [number]
+LOCATION: [Section name and enough detail to find it, e.g., "GEP Worldwide experience - Bullet 3" or "Skills Section - Backend Frameworks group"]
+ACTION: [ADD / REPLACE / REORDER]
+FIND: [The exact text string as it appears in the current resume. For a reorder, the exact bullet text to be moved.]
+REPLACE WITH: [The exact new text string. For a skills addition, the exact keyword and where in the group it should appear. For a reorder, the new position relative to named surrounding bullets.]
+REASON: [One sentence stating which step and which rule triggered this change.]
+
+I will apply all changes manually to the LaTeX source.
+
+--- TARGET JOB DATA ---
+Job Title: [Insert Job Title]
+Job Description:
+[Paste Job Description here]
+
+## OLD
 ### V3 -
 
 #### Phase 1 — SDE Context Initialization (Run once initially)
@@ -417,6 +571,162 @@ Role: Act as an elite Technical Recruiter, ATS (Applicant Tracking System) Optim
 
 
 ## DS -
+
+### V4 -
+
+#### Phase 1 — DS/ML Context Initialization
+
+Role: Act as an elite Technical Recruiter, ATS Algorithm Expert, and Lead Machine Learning Engineer.
+
+Objective: Ingest the three documents below — Master Resume (LaTeX), Work Experience Context, and Project Context. Read each carefully and completely. Do not generate a tailored resume yet.
+
+After reading, produce a Synthesis Report in this exact format:
+
+WORK EXPERIENCE
+For each role: Company | Role Title | Approximate Duration, the ML and data tech stack used (sourced only from the documents, do not infer), a 2-3 sentence description of the core ML or data engineering work, and key quantified achievements copied exactly as stated.
+
+PROJECTS
+For each project: Project Name | Your Role, the tech stack and model architecture used (sourced only from the documents), a 1-2 sentence description of what the system does, how it works technically, and what data it operates on, and key quantified outcomes as stated.
+
+SKILLS INVENTORY
+Every distinct technical skill, tool, framework, library, and platform mentioned anywhere across the three documents, grouped into: ML Frameworks, Data Engineering, Languages, Vector Databases, Cloud/MLOps, Other Tools.
+
+GAPS AND AMBIGUITIES
+Anything unclear, inconsistent across documents, or missing that would affect tailoring (e.g., a vague metric, an architecture described partially, a tool named but not contextualized). Do not resolve these — flag them for my review.
+
+Non-Hallucination Principle: Everything in the synthesis must come directly from the provided documents. Do not infer model architecture choices beyond what is written, assume unstated benchmark results, or generalize a project's scope beyond what is explicitly described. If a detail is not in the documents, it does not exist in this session.
+
+Once I confirm your synthesis is accurate, you are ready for Phase 2.
+
+--- MY MASTER DATA ---
+[Paste your full LaTeX Resume code here]
+[Paste your Work Experience Context doc here]
+[Paste your Project Context doc here]
+
+#### Phase 2 — DS/ML Tailoring Engine ( (For every prompt))
+
+Role: Act as an elite Technical Recruiter, ATS Optimization Expert, Senior Data Scientist / ML Engineer, and resume text editor.
+
+Task: Tailor my Master Resume to the provided DS/ML Job Description (JD). Maximize ATS keyword coverage while preserving natural readability, narrative coherence, and original content length.
+
+Core Philosophy: You are a surgical text editor, not a rewriter. Every change must make the resume strictly better. If a change does not clearly improve the resume, do not make it. Recruiter readability always takes priority over ATS score inflation. No modified bullet may exceed its original word count by more than 3-4 words. Length overruns cause reformatting work and are treated as a failed edit.
+
+
+STEP 1 - JD Keyword Extraction
+
+Read the full JD and extract every relevant technical keyword into two categories:
+A) Hard Skills / Frameworks / Tools (e.g., PyTorch, LangChain, FAISS, HuggingFace, Spark, dbt, MLflow)
+B) Conceptual / Methodological Skills (e.g., RAG pipeline design, LLM fine-tuning, vector search, data streaming, feature engineering, model evaluation)
+
+This keyword list drives all decisions in Steps 2-6.
+
+
+STEP 2 - Skills Section Placement (Two-Pass)
+
+This is the primary and preferred placement method for all JD keywords. Exhaust both passes fully before touching any bullet.
+
+Pass 1 - Direct Evidence: For any JD keyword explicitly named or used in the context documents, add it to the appropriate Skills group. Mark as resolved.
+
+Pass 2 - Contextual Inference: For keywords not placed in Pass 1, evaluate whether the documented work makes the skill logically certain or highly probable even if never explicitly named. A keyword qualifies if it meets any one of these criteria:
+- Component Inference: The skill is a direct named component of a documented pipeline or model architecture (e.g., built a RAG pipeline implies vector search and embedding models; fine-tuned with QLoRA implies parameter-efficient fine-tuning).
+- Terminology Inference: The skill is the standard ML industry term for something demonstrably done but described differently (e.g., "ranked results using a scoring model" implies learning-to-rank; "chunked and indexed documents for retrieval" implies document preprocessing strategy).
+- Prerequisite Inference: The skill is a technical prerequisite for the documented work (e.g., trained a neural network implies backpropagation and gradient descent; built a data streaming pipeline implies serialization and schema design).
+
+A keyword does not qualify if it represents capability never demonstrated in any documented context, belongs to a different modeling paradigm from what is shown (e.g., do not infer computer vision from NLP work), or is a stretch where reasonable doubt exists.
+
+Mathematical Accuracy Rule: All contextual inferences must respect ML terminology boundaries. Do not use "fine-tuning" to imply "RAG." Do not use "embeddings" to imply "supervised classification." Inferences must be technically sound. Log every inferred skill as "Inferred from [role/project name]" with one sentence of justification.
+
+
+STEP 3 - Narrative Dependency Mapping
+
+Before reordering anything, identify locked sequences within each section: any bullet that introduces a dataset, model architecture, or pipeline component that a later bullet explicitly builds upon; any bullet that establishes the problem setup, data scale, or baseline metric that makes a subsequent result meaningful; any bullet describing a data preparation or training step before its evaluation outcome. Locked sequences must never be broken regardless of JD relevance.
+
+
+STEP 4 - Conditional Bullet Reordering
+
+Reorder a bullet only if all three conditions are simultaneously met:
+A) The bullet is not part of a locked sequence identified in Step 3.
+B) Moving it would bring a bullet addressing a core JD requirement from position 3 or lower to position 1 within that section.
+C) The current top 1-2 bullets do not already address the same JD requirement.
+
+If the gain is marginal, do not reorder. Default is to preserve the original order.
+
+
+STEP 5 - Surgical Bullet Modification (Last Resort, High Bar)
+
+Only for JD keywords that could not be placed via either pass of Step 2. A modification requires all four gates to pass. If any gate fails, the keyword is a true gap — log it, do not force it.
+
+Gate 1 - Concept Exists: The bullet already describes work that embodies this skill. The concept is present, just expressed generically or with less precise ML terminology. This is a terminology upgrade, not introducing a new capability (e.g., "similarity search over indexed embeddings" to "FAISS-based similarity search over indexed embeddings").
+Gate 2 - Zero New Claims: The modification introduces no new facts, performance numbers, or capabilities. The bullet's meaning does not change.
+Gate 3 - Significant Impact: A technical hiring manager would meaningfully change their assessment of this bullet's relevance to the JD. Cosmetic improvement does not pass this gate.
+Gate 4 - Naturalness and Length: Read the modified bullet aloud. It must sound at least as natural as the original and must not exceed the original word count by more than 3-4 words. If the injection requires more space than that, it fails this gate. One injected keyword per bullet maximum.
+
+If all four gates pass, make the minimal text change required — a terminology upgrade, not a sentence rewrite.
+
+
+STEP 6 - True Gap Logging
+
+Any JD keyword that could not be placed via Steps 2 or 5 is a true gap. For each: name it, confirm it is absent from both explicit documents and reasonable contextual inference, and suggest one specific actionable way to address it in a future resume version. Do not force placements to avoid logging a gap.
+
+
+STEP 7 - Professional Summary Optimization
+
+Rewrite the summary in 2-3 lines as a targeted hook for this DS/ML role. Mirror JD language on ML frameworks, data pipeline methodologies, and modeling objectives. Use only documented facts. Introduce no new claims. Match the approximate character length of the original summary — do not write a longer summary that will overflow the resume layout.
+
+
+STEP 8 - Content Quality Audit
+
+Review every bullet in the resume, original and modified, against every item below and fix all failures before proceeding.
+
+Tense: Past tense for all non-current roles. Present tense for current role only.
+Action Verb Variety: No action verb repeated more than twice within a section. Swap repeats for a precise alternative.
+Banned Cliche Verbs: spearheaded, orchestrated, leveraged, utilized, fostered, delved, championed, harnessed. Replace with plain, direct alternatives.
+Banned Filler Words: various, multiple, several, robust, cutting-edge, innovative, complex, dynamic, seamless, end-to-end. Remove or replace.
+Bullet Structure: Every bullet follows Action Verb + Technical Task + Measurable Impact. Flag any bullet missing a quantifiable outcome in the Gap section if the context docs cannot supply a metric.
+Grammar: Confirm no awkward phrasing was introduced by any keyword injection. Check subject-verb agreement, article usage, and parallel structure within multi-part bullets.
+Injection Density: No single bullet contains more than one injected or modified keyword. If two keywords belong to the same bullet, choose the higher-JD-priority one and place the other in the Skills section.
+ML Terminology Consistency: Ensure the same concept is referred to by the same term throughout the document. Do not say "vector store" in one bullet and "vector database" in another for the same system.
+
+
+STEP 9 - Multi-Persona Review
+
+Silently evaluate the full draft before generating any output and fix every issue found.
+
+Senior ML Engineer lens: Is all ML terminology used in a mathematically and architecturally accurate way appropriate to this specific role? Does the reordering make logical sense for the modeling and data pipeline emphasis of the JD's domain (e.g., NLP vs. recommendations vs. data engineering)? Were any ML skills from the context docs that overlap with the JD missed?
+
+Recruiter lens: Is the business or research impact of the ML work immediately visible and quantified? Is every bullet understandable to a technical recruiter familiar with ML concepts but not necessarily this specific architecture? Does the resume feel cohesive, human-written, and internally consistent?
+
+
+OUTPUT FORMAT - Produce in this exact order.
+
+SECTION 1 - ATS Score and Gap Analysis
+Estimated ATS match score from 0-100.
+True gaps only (from Step 6): keyword, reason it could not be placed, one actionable suggestion for a future resume version.
+
+SECTION 2 - Change Log
+Skills added via Direct Evidence: keyword and the Skills group it was added to.
+Skills added via Contextual Inference: keyword, Skills group, one-sentence inference justification.
+Bullets reordered: section name, original position to new position, one-line justification referencing the three-gate test.
+Bullets modified: full BEFORE text and full AFTER text for each, and which gates justified the change.
+Content Quality Audit fixes applied, listed briefly.
+
+SECTION 3 - Change Report
+This is the only output you will produce for resume edits. Do not output any LaTeX code. For every change to be made — skills additions, bullet text modifications, bullet reordering, and summary rewrite — list it in this exact format:
+
+CHANGE [number]
+LOCATION: [Section name and enough detail to find it, e.g., "GEP Worldwide experience - Bullet 3" or "Skills Section - ML Frameworks group"]
+ACTION: [ADD / REPLACE / REORDER]
+FIND: [The exact text string as it appears in the current resume. For a reorder, the exact bullet text to be moved.]
+REPLACE WITH: [The exact new text string. For a skills addition, the exact keyword and where in the group it should appear. For a reorder, the new position relative to named surrounding bullets.]
+REASON: [One sentence stating which step and which rule triggered this change.]
+
+I will apply all changes manually to the LaTeX source.
+
+--- TARGET JOB DATA ---
+Job Title: [Insert Job Title]
+Job Description:
+[Paste Job Description here]
+
 
 ### V3 -
 
