@@ -156,8 +156,8 @@ Job Title: [Insert Job Title]
 Job Description:
 [Paste Job Description here]
 
-## OLD
-### V3 -
+### OLD
+#### V3 -
 
 #### Phase 1 — SDE Context Initialization (Run once initially)
 
@@ -473,7 +473,7 @@ Job Description:
 
 
 
-### V2 -
+#### V2 -
 
 1. Role: Act as an elite Technical Recruiter, ATS (Applicant Tracking System) Optimization Expert, and LaTeX formatting specialist.
    
@@ -517,7 +517,7 @@ Job Description:
 	
 		Latex Resume Code -
 
-### V1 -
+#### V1 -
 	
 Role: Act as an elite Technical Recruiter, ATS (Applicant Tracking System) Optimization Expert, and LaTeX formatting specialist.
    
