@@ -6,4 +6,11 @@ Questions to ask while solving -
 3. Do we need multiple sources? Check again, have you covered all the sources?
 4. If implementing multiple source BFS -
    4.1 Do we need a single visited array or multiple? Depends if a cell/node can be updated once or multiple times or if a node can be updated in a single way (ex. Map of Highest Peak) or multiple ways (ex. Pacific Atlantic Water Flow) 
-5. 
+
+
+
+BFS general code structure -
+
+
+Find neighbours
+explore all 
